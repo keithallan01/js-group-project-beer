@@ -1,7 +1,6 @@
 {
   "name": "group_project",
   "version": "1.0.0",
-  "description": "",
   "main": "webpack.config.js",
   "dependencies": {
     "@amcharts/amcharts4": "^4.0.24",
@@ -20,5 +19,14 @@
     "build": "webpack -w"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/keithallan01/js-group-project-beer.git"
+  },
+  "bugs": {
+    "url": "https://github.com/keithallan01/js-group-project-beer/issues"
+  },
+  "homepage": "https://github.com/keithallan01/js-group-project-beer#readme",
+  "description": ""
 }

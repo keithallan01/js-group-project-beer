@@ -19,7 +19,7 @@ body{
 h1{
   padding: inherit;
   border: 2px solid black;
-  background-color: red;
+  background-color: #ff9900;
 }
 
 h3{
@@ -341,7 +341,16 @@ font-size: 0.8em;
   font-size: 20px;
 }
 
+a#skip, a#skip:hover, a#skip:visited {
+  position: absolute;
+  top: -500px;
+  width: 1px;
+  height:1px;
+  overflow: hidden;
+}
 
-
-
-
+a#skip:active, a#skip:focus{
+  position: static;
+  width: auto;
+  height: auto;
+}
