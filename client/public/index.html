@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Sláinte</title>
+  <title>Sláinte, a beer tracking app</title>
   <script src="/js/bundle.js"></script>
   <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -24,21 +24,24 @@
           <li><a href="index.html">Home</a></li>
           <li><a href="contact.html">Contact</a></li>
           <li><a href="about.html">About</a></li>
-          <a href="https://www.facebook.com/codeclanscotland/" target="_blank" class="fa fa-facebook"></a>
-          <a href="https://twitter.com/CodeClanScot?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" target="_blank" class="fa fa-twitter"></a>
-          <a href="https://www.instagram.com/codeclan/?hl=en" target="_blank" class="fa fa-instagram"></a>
+          <a aria-label="CodeClan on Instagram" href="https://www.instagram.com/codeclan/?hl=en" target="_blank" class="fa fa-instagram"></a>
+          <a aria-label="CodeClan on Twitter" href="https://twitter.com/CodeClanScot?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" target="_blank" class="fa fa-twitter"></a>
+          <a aria-label="CodeClan on Facebook" href="https://www.facebook.com/codeclanscotland/" target="_blank" class="fa fa-facebook"></a>
+          <a id="skip" alt="skip to add a beer" href="#add-beer">Skip to Add Beer</a>
         </ul>
       </nav>
 
     </div>
     <div class="beerContent">
-      <section id='chartdiv'></section>
+      <section  aria-hidden="true" id='chartdiv'></section>
       <h1 id="content">Beers I've drank</h1>
       <section id="drank-beer-list"></section>
       <p>Copyright &copy; CodeClan-e27-Sláinte - Please drink responsibly </p>
     </div>
     <div class='Form-grid'>
+      <p> Welcome to Slainte, a beer tracking app. Keep track of all the beers you have tried from around the world. View your Stats to see how many beers you have sampled, your average rating, and the average ABV.</p>
       <form id="form">
+        <h2 id="add-beer">Add Beer</h2>
         <table>
           <tbody>
             <tr>
@@ -46,8 +49,8 @@
               <td><label for="brewery">Brewery:</label></td>
             </tr>
             <tr>
-              <td><input class='fixedwidth' required type="text" id="name" /></td>
-              <td><input class='fixedwidth' type="text" id="brewery" /></td>
+              <td><input class='fixedwidth'  aria-required="true" type="text" id="name" onfocus="myFunction(this)"/></td>
+              <td><input class='fixedwidth'  aria-required="true" type="text" id="brewery" onfocus="myFunction(this)"/></td>
             </tr>
             <tr>
               <td><label for="countries">Select a country:</label></td>
@@ -55,42 +58,49 @@
             </tr>
             <tr>
               <td>
-                <select class='fixedwidth' id="countries">
+                <select class='fixedwidth' id="countries" onfocus="myFunction(this)">
                   <option selected disabled></option>
                 </select>
               </td>
-              <td><input class='fixedwidth' required type="number" id="abv" step="0.1" min="0" max="100" /></td>
+              <td><input class='fixedwidth'  aria-required="true" type="number" id="abv" step="0.1" min="0" max="100" onfocus="myFunction(this)"/></td>
             </tr>
             <tr>
               <td><label for="type">Type:</label></td>
               <td><label for="description">Description:</label></td>
             </tr>
             <tr>
-              <td><input class='fixedwidth' require type="text" id="type" /></td>
-              <td><input class='fixedwidth' type="text" id="description" /></td>
+              <td><input class='fixedwidth' aria-required="true" type="text" id="type" onfocus="myFunction(this)"/></td>
+              <td><input class='fixedwidth' type="text" id="description" onfocus="myFunction(this)"/></td>
             </tr>
             <tr>
               <td><label for="consumed">Date Consumed:</label></td>
               <td><label for="rating" class="primary">Rating</label></td>
             </tr>
             <tr>
-              <td><input class='fixedwidth' type="date" id="consumed"></td>
-              <td> <input required type="radio" name="rating" value="5">5</input>
-                <input type="radio" name="rating" value="4">4</input>
-                <input type="radio" name="rating" value="3">3</input>
+              <td><input class='fixedwidth' type="date" id="consumed" onfocus="myFunction(this)"></td>
+              <td>
+                <input required type="radio" name="rating" value="1" onfocus="myFunction(this)">1</input>
                 <input type="radio" name="rating" value="2">2</input>
-                <input type="radio" name="rating" value="1">1</input></td>
+                <input type="radio" name="rating" value="3">3</input>
+                <input type="radio" name="rating" value="4">4</input>
+                <input type="radio" name="rating" value="5">5</input>
+              </td>
+              <script>
+                function myFunction(x) {
+                  x.style.background = "yellow";
+                }
+              </script>
             </tr>
           </tbody>
         </table>
-        <input type="submit" value="Save" id="save" />
+        <input aria-live="assertive" aria-atomic="true" type="submit" value="Save" id="save" />
       </form>
 
     </div>
     <div class="Logo">
-      <img src='./assets/logo_text_trans.png'>
+      <img alt="Slainte- A Beer Tacking App" src='./assets/logo_text_trans.png'>
     </div>
-    <div class="Map">
+    <div aria-hidden="true" class="Map">
     </div>
     <div class="Stats">
       <section id="stats"></section>
@@ -109,25 +119,25 @@
   <div id="edit-div">
 
     <form id="edit-form">
-      <div>
+      <div aria-live="assertive" aria-atomic="true">
         <label for="name">Name:</label>
         <input type="text" id="name" />
       </div>
-      <div>
+      <div aria-live="assertive" aria-atomic="true">
         <label for="brewery">Brewery:</label>
         <input type="text" id="brewery" />
       </div>
-      <div>
+      <div aria-live="assertive" aria-atomic="true">
         <label for="edit">Select a country:</label>
         <select id="edit-countries">
           <option selected disabled></option>
         </select>
       </div>
-      <div>
+      <div aria-live="assertive" aria-atomic="true">
         <label for="abv">ABV:</label>
         <input type="number" id="abv" step="0.1" min="0" max="100" />
       </div>
-      <div class="form-item">
+      <div class="form-item" aria-live="assertive" aria-atomic="true">
         <label for="type">Type:</label>
         <input require type="text" id="type" />
       </div>
@@ -135,19 +145,20 @@
         <label for="description">Description:</label>
         <input type="text" id="description" />
       </div>
-      <div class="form-item">
+      <div class="form-item" aria-live="assertive" aria-atomic="true">
         <label for="consumed">Date Consumed:<label>
             <input type="date" id="consumed">
       </div>
       <div class="form-item">
         <label for="rating" class="primary">Rating</label>
-        <input type="radio" name="rating" value="5">5</input>
-        <input type="radio" name="rating" value="4">4</input>
-        <input type="radio" name="rating" value="3">3</input>
-        <input type="radio" name="rating" value="2">2</input>
         <input type="radio" name="rating" value="1">1</input>
+        <input type="radio" name="rating" value="2">2</input>
+        <input type="radio" name="rating" value="3">3</input>
+        <input type="radio" name="rating" value="4">4</input>
+        <input type="radio" name="rating" value="5">5</input>
+
       </div>
-      <input type="submit" value="Save" id="save" />
+      <input role="alert" type="submit" value="Save" id="save" />
     </form>
 
 
